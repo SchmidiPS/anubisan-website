@@ -10,6 +10,7 @@ body {
     color: #333;
     background-color: #fff;
     line-height: 1.8; /* Allgemeiner Zeilenabstand */
+    padding-top: 95px; /* Höhe der Navbar */
 }
 
 /* Navigation */
@@ -19,9 +20,12 @@ body {
     align-items: center;
     padding: 20px;
     position: fixed;
+    top: 40px; /* Fixiere die Navbar oben */
+    left: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.9);
     z-index: 100;
+    margin: 0; /* Entferne ungewollte Browser-Margin */
 }
 
 .navbar .logo img {
@@ -41,6 +45,19 @@ body {
     text-decoration: none;
     color: #333;
     font-weight: 500;
+}
+
+.nav-links.mobile-active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Position unterhalb der Navbar */
+    right: 0;
+    background-color: white;
+    width: 100%;
+    z-index: 200;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .language-switcher {
@@ -69,23 +86,22 @@ body {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 70vh;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    height: 60vh; /* Vollbildhöhe */
+    min-height: 400px; /* Mindesthöhe für kleinere Bildschirme */
+    overflow: hidden;
 }
 
 #hero-video {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Füllt den gesamten Bereich */
     z-index: 1;
 }
 
@@ -95,27 +111,71 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Dunkler Overlay-Effekt */
     z-index: 2;
 }
 
 .hero-content {
     position: relative;
     z-index: 3;
-    text-align: center;
-    color: #fff;
+    color: white;
     max-width: 800px;
-    padding: 0 20px;
+    padding: 20px;
+    text-align: center;
 }
 
 .hero-content h1 {
-    font-size: 3em;
-    margin-bottom: 30px; /* Mehr Abstand unter der Überschrift */
+    font-size: 3rem;
+    margin-bottom: 20px;
 }
 
 .hero-content p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.hero-content .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007BFF;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.hero-content .cta-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh; /* Reduzierte Höhe für Tablets */
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero {
+        height: 70vh; /* Noch kleinere Höhe für Smartphones */
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
 }
 
 .cta-button {
@@ -272,83 +332,145 @@ footer {
     padding: 120px 20px 60px; /* Abstand nach oben erhöht (120px) */
 }
 
-/* Produktdarstellung */
+
+/* Produktseite */
+.product {
+    background-color: transparent; /* Kein Hintergrund */
+    box-shadow: none; /* Kein Schatten */
+    border-radius: 0; /* Keine abgerundeten Ecken */
+    padding: 0; /* Keine zusätzliche Innenabstände */
+}
+
+
 .product-content {
     display: flex;
-    flex-wrap: nowrap; /* Bilder und Text nebeneinander */
-    align-items: center;
-    margin: 40px 0;
-    text-align: left;
+    flex-wrap: nowrap; /* Keine Zeilenumbrüche */
+    align-items: stretch; /* Gleiche Höhe für Bild und Text */
+    justify-content: space-between; /* Abstand zwischen Bild und Text */
+    width: 100%; /* Nutzt die gesamte verfügbare Breite */
+    max-width: 1200px; /* Begrenzung auf gleiche Breite wie "Unsere Produkte" */
+    margin: 0 auto; /* Zentrieren der Section */
+    gap: 20px; /* Fester Abstand zwischen Bild und Text */
+    box-sizing: border-box; /* Padding wird berücksichtigt */
+    padding: 0 20px; /* Optional: Innenabstand links und rechts */
 }
 
 .product-content:nth-child(even) {
     flex-direction: row-reverse; /* Bild rechts bei jedem zweiten Produkt */
 }
 
-.product-image {
-    flex: 1;
-    max-width: 80%; /* Bild nimmt maximal die Hälfte des Containers ein */
-    text-align: center;
-    margin: 10px;
+@media (max-width: 768px) {
+    .product-content {
+        flex-direction: column; /* Vertikale Anordnung auf kleineren Geräten */
+        text-align: center; /* Zentrierter Text für mobile Geräte */
+    }
+
+    .product-content:nth-child(even) {
+        flex-direction: column; /* Einheitliche Richtung für mobile Geräte */
+    }
 }
 
+.product-image {
+    flex: 0 0 400px; /* Feste Breite des Bildes */
+    margin: 0; /* Kein zusätzlicher Abstand */
+}
+
+.product-image img {
+    width: 100%; /* Bild passt sich automatisch an */
+    max-width: 400px; /* Maximale Breite des Bildes */
+    height: auto; /* Beibehaltung der Proportionen */
+    display: block;
+    border-radius: 15px; /* Sanfte abgerundete Ecken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Schatten für visuelle Tiefe */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Weicher Hover-Effekt */
+}
+
+.product-image img:hover {
+    transform: scale(1.05); /* Leichtes Zoomen beim Hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Intensiverer Schatten beim Hover */
+}
+
+@media (max-width: 768px) {
+    .product-image {
+        max-width: 90%; /* Größeres Bild auf kleineren Geräten */
+    }
+}
+
+
 .product-description {
-    flex: 2;
-    margin: 20px;
-    padding: 20px;
+    flex: 1; /* Nimmt den verbleibenden Platz ein */
+    padding: 40px; /* Innenabstand */
+    background-color: #f9f9f9; /* Optional: Hintergrundfarbe */
+    border-radius: 10px; /* Runde Ecken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Schatten */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertikale Zentrierung */
+    text-align: left; /* Links ausgerichteter Text */
 }
 
 .product-description h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #333; /* Deutliche, lesbare Schriftfarbe */
 }
 
 .product-description p {
     font-size: 1rem;
-    line-height: 1.8;
+    line-height: 1.5;
+    color: #555; /* Etwas hellere Schriftfarbe für weniger Dominanz */
 }
 
-/* Schatten um Bilder */
-.product-image img {
-    width: 100%; /* Passt die Breite an den Container an */
-    max-width: 400px; /* Maximale Breite des Bildes */
-    height: auto; /* Beibehaltung der Proportionen */
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schatten hinzufügen */
-    border-radius: 20px; /* Abgerundete Ecken für ein weicheres Design */
-    transition: transform 0.3s, box-shadow 0.3s; /* Weicher Übergang */
+@media (max-width: 768px) {
+    .product-description {
+        text-align: center; /* Text zentrieren auf mobilen Geräten */
+        padding: 15px;
+    }
+
+    .product-description h2 {
+        font-size: 1.4rem;
+    }
+
+    .product-description p {
+        font-size: 0.9rem;
+    }
 }
 
-/* Hover-Effekt für Bilder */
-.product-image img:hover {
-    transform: scale(1.05); /* Bild wird leicht vergrößert */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Schatten wird intensiver */
-}
+
 
 .section-content {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 40px 0;
+    flex-wrap: nowrap; /* Keine Zeilenumbrüche */
+    align-items: center; /* Gleiche Höhe für Bild und Text */
+    justify-content: space-between; /* Abstand zwischen Bild und Text */
+    width: 100%; /* Nutzt die gesamte verfügbare Breite */
+    max-width: 1200px; /* Begrenzung auf gleiche Breite wie "Unsere Produkte" */
+    margin: 0 auto; /* Zentrieren der Section */
+    gap: 20px; /* Fester Abstand zwischen Bild und Text */
+    box-sizing: border-box; /* Padding wird berücksichtigt */
+    padding: 0 20px; /* Optional: Innenabstand links und rechts */
 }
 
-.section-content .text {
-    flex: 1;
-    margin: 20px;
-}
 
+.section-content .text,
 .section-content .image {
     flex: 1;
-    text-align: center;
+    margin: 10px;
 }
 
 .section-content .image img {
-    max-width: 60%;
+    max-width: 400px;
     height: auto;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+@media (max-width: 768px) {
+    .section-content {
+        flex-direction: column; /* Elemente untereinander */
+    }
+}
+
 
 
 .job-profile h3 {
