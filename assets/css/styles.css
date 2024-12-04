@@ -125,12 +125,12 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2.2rem;
     margin-bottom: 20px;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 20px;
 }
 
@@ -152,21 +152,22 @@ body {
 /* Responsive Anpassungen */
 @media (max-width: 768px) {
     .hero {
-        height: 70vh; /* Reduzierte Höhe für Tablets */
+        height: 90vh; /* Reduzierte Höhe für Tablets */
     }
 
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .hero-content p {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 }
 
+/*
 @media (max-width: 500px) {
     .hero {
-        height: 70vh; /* Noch kleinere Höhe für Smartphones */
+        height: 70vh; 
     }
 
     .hero-content h1 {
@@ -176,7 +177,7 @@ body {
     .hero-content p {
         font-size: 0.9rem;
     }
-}
+}*/
 
 .cta-button {
     display: inline-block;
@@ -332,6 +333,16 @@ footer {
     padding: 120px 20px 60px; /* Abstand nach oben erhöht (120px) */
 }
 
+@media (max-width: 768px) {
+	.logo-container {
+		width: 110%; /* Größe des Logos */
+	}
+	.about-logo {
+    width: 300px; /* Größe des Logos */
+    height: auto;
+}
+}
+
 
 /* Produktseite */
 .product {
@@ -437,7 +448,7 @@ footer {
 }
 
 
-
+/* Dienstleistungen */
 .section-content {
     display: flex;
     flex-wrap: nowrap; /* Keine Zeilenumbrüche */
@@ -459,7 +470,7 @@ footer {
 }
 
 .section-content .image img {
-    max-width: 400px;
+    max-width: 350px;
     height: auto;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -469,10 +480,14 @@ footer {
     .section-content {
         flex-direction: column; /* Elemente untereinander */
     }
+	
+	.section-content .image{
+        max-width: 110%; /* Größeres Bild auf kleineren Geräten */
+    }
 }
 
 
-
+/* Careers */
 .job-profile h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
@@ -499,7 +514,6 @@ footer {
 }
 
 
-
 /* Team-Grafik */
 .team-graphic .image-container {
     text-align: center;
@@ -511,6 +525,16 @@ footer {
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+@media (max-width: 768px) {
+	.team-graphic img {
+    min-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	}
 }
 
 .contact-form {
